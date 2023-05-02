@@ -82,12 +82,29 @@ public class Usuario {
 
     void exibirDados() {
         System.out.println("Codigo: " + codigo);
-        System.out.println("Usuario: " );
+        System.out.println("Usuario: " + nome );
         System.out.println("Senha: " + senha);
-        System.out.println("Trocar senha: ");
+        System.out.println("Trocar senha: " + primeiroAcesso);
         System.out.println("Status: " + status);
         System.out.println("------");
     }
 
+    String autenticar(String senha){
+        if (status.equals(StatusUsuarioEnum.INATIVO) || status.equals(StatusUsuarioEnum.BLOQUEADO) ){
+            return "Acesso Negado";
+        }
+            if (tentativasAcesso >= 3 ){
+                status = StatusUsuarioEnum.BLOQUEADO;
+                return "Acesso Negado1";
+            }
+                if (this.senha == senha){
+                    this.tentativasAcesso = 0;
+                    return "Acesso Liberado";
+                }
+                else {
+                    this.tentativasAcesso += 1;
+                    return "Usuario/senha invalidos";
+                }
+    }
 
 }
