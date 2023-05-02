@@ -81,6 +81,13 @@ public class Usuario {
     }
 
     void exibirDados() {
-
+        System.out.println("Codigo: " + codigo);
+        System.out.println("Usuario: " );
+        System.out.println("Senha: " + senha);
+        System.out.println("Trocar senha: ");
+        System.out.println("Status: " + status);
+        System.out.println("------");
     }
+
+
 }
